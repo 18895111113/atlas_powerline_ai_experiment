@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>输电线路智能巡检平台</title>
+    <link rel="stylesheet" href="./styles.css?v=20260608-video-running" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Atlas Powerline AI</p>
+          <h1>输电线路智能巡检平台</h1>
+        </div>
+        <div id="statusStrip" class="status-strip offline" aria-label="系统状态">
+          <span class="status-dot"></span>
+          <span id="systemStatus">未连接开发板后端</span>
+          <span id="clock">--:--:--</span>
+        </div>
+      </header>
+
+      <section class="control-bar" aria-label="后端连接">
+        <label class="api-field">
+          <span>Atlas 服务</span>
+          <input id="apiBase" type="url" autocomplete="off" spellcheck="false" />
+        </label>
+        <label class="model-field">
+          <span>Model</span>
+          <select id="modelSelect" autocomplete="off">
+            <option value="">Default model</option>
+          </select>
+        </label>
+        <button id="saveApi" class="button primary" type="button">连接</button>
+        <button id="refreshHealth" class="button" type="button">刷新状态</button>
+        <span id="backendDetail" class="backend-detail">等待后端响应</span>
+      </section>
+
+      <section class="dashboard" aria-label="巡检工作台">
+        <div class="viewer">
+          <div class="viewer-head">
+            <div>
+              <p class="label">输入源</p>
+              <h2 id="sourceTitle">Atlas 摄像头实时流</h2>
+            </div>
+            <div class="source-controls" aria-label="输入源控制">
+              <button id="useAtlasStream" class="source-button active" type="button">开发板摄像头</button>
+              <button id="useImage" class="source-button" type="button">上传图片</button>
+              <button id="useVideo" class="source-button" type="button">上传视频</button>
+              <input id="imageInput" class="file-input" type="file" accept="image/*" />
+              <input id="videoInput" class="file-input" type="file" accept="video/*" />
+            </div>
+            <div class="viewer-actions">
+              <button id="toggleRun" class="icon-button" type="button" aria-label="暂停实时流" title="暂停实时流">||</button>
+            </div>
+          </div>
+
+          <div class="canvas-wrap">
+            <canvas id="scene" width="1280" height="720" aria-label="检测画面"></canvas>
+            <div id="liveChip" class="live-chip offline">OFFLINE</div>
+            <img id="streamImage" class="hidden-media" alt="" crossorigin="anonymous" />
+            <video id="fileVideo" class="hidden-media" muted playsinline preload="metadata"></video>
+            <img id="fileImage" class="hidden-media" alt="" />
+          </div>
+
+          <div id="videoControls" class="media-controls hidden" aria-label="视频时间轴">
+            <input id="videoSeek" type="range" min="0" max="1000" value="0" step="1" />
+            <span id="videoTime">00:00 / 00:00</span>
+          </div>
+        </div>
+
+        <aside class="side-panel" aria-label="检测结果">
+          <section class="panel-block">
+            <p class="label">风险等级</p>
+            <div id="riskBadge" class="risk-badge idle">未连接</div>
+          </section>
+
+          <section class="panel-block source-card">
+            <p class="label">当前输入</p>
+            <strong id="sourceName">atlas-camera://0</strong>
+            <span id="sourceHint">等待 Atlas 后端提供真实检测结果</span>
+          </section>
+
+          <section class="metric-grid" aria-label="实时指标">
+            <div class="metric">
+              <span>检测目标</span>
+              <strong id="targetCount">--</strong>
+            </div>
+            <div class="metric">
+              <span>最高置信度</span>
+              <strong id="confidence">--</strong>
+            </div>
+            <div class="metric">
+              <span>推理延迟</span>
+              <strong id="latency">--</strong>
+            </div>
+            <div class="metric">
+              <span>画面帧率</span>
+              <strong id="fps">--</strong>
+            </div>
+          </section>
+
+          <section class="panel-block">
+            <div class="section-title">
+              <p class="label">告警事件</p>
+              <span id="resultTime">--</span>
+            </div>
+            <div id="alertList" class="alert-list"></div>
+          </section>
+        </aside>
+      </section>
+
+      <section class="timeline" aria-label="检测流水">
+        <div class="section-title">
+          <div>
+            <p class="label">检测流水</p>
+            <h2>最近 8 条真实结果</h2>
+          </div>
+          <span id="sourceMode">atlas-camera://0</span>
+        </div>
+        <div id="eventRows" class="event-rows"></div>
+      </section>
+    </main>
+
+    <script src="./app.js?v=20260608-video-running"></script>
+  </body>
+</html>

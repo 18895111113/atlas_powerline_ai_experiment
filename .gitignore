@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local virtual environments
+.venv/
+venv/
+env/
+
+# IDE and OS files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Datasets, downloaded sources, and test media
+datasets/
+
+# Training and inference outputs
+runs/
+runs_*/
+runs*/
+outputs/
+logs/
+*.log
+
+# Archives and packaged exports
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+
+# Large media files
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Keep generated model files out of git history by default.
+# Use Git LFS or a release artifact if these need to be shared.
+*.pt
+*.pth
+*.onnx
+*.om
+
+# Allow placeholder files and model documentation to be tracked.
+!models/**/*.gitkeep
+!models/**/文件夹说明.md
+!atlas_deploy_powerline_yolov5s/models/**/*.gitkeep
+!atlas_deploy_powerline_yolov5s/models/**/文件夹说明.md

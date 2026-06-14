@@ -1,0 +1,21 @@
+{
+  "default_model_id": "powerline_v2_closeup_fast",
+  "models": [
+    {
+      "id": "powerline_v1",
+      "name": "Powerline v1 - 3 classes",
+      "om": "models/om/powerline_yolov5s.om",
+      "classes": "configs/classes.txt",
+      "input_size": 640,
+      "description": "Legacy model: crane, excavator, foreign_object"
+    },
+    {
+      "id": "powerline_v2_closeup_fast",
+      "name": "Powerline v2 closeup - 4 classes",
+      "om": "models/om/powerline_yolov5s_v2_closeup_fast.om",
+      "classes": "configs/classes_v2.txt",
+      "input_size": 640,
+      "description": "New closeup model: crane, excavator, foreign_object, person"
+    }
+  ]
+}

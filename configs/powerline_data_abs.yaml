@@ -1,0 +1,9 @@
+path: C:/Users/29951/OneDrive/Desktop/atlas_powerline_ai_experiment/datasets/powerline
+train: images/train
+val: images/val
+test: images/test
+
+names:
+  0: crane
+  1: excavator
+  2: foreign_object

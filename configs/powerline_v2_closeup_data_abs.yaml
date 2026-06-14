@@ -1,0 +1,20 @@
+path: C:/Users/29951/OneDrive/Desktop/atlas_powerline_ai_experiment
+train:
+  - datasets/powerline/images/train
+  - datasets/openimages_powerline_extra/images/train
+  - datasets/construction_closeup_extra/images/train
+val:
+  - datasets/powerline/images/val
+  - datasets/openimages_powerline_extra/images/val
+  - datasets/construction_closeup_extra/images/val
+test:
+  - datasets/powerline/images/test
+  - datasets/openimages_powerline_extra/images/test
+  - datasets/construction_closeup_extra/images/test
+
+nc: 4
+names:
+  0: crane
+  1: excavator
+  2: foreign_object
+  3: person
